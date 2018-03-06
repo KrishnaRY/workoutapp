@@ -1,15 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoginService } from './login.service'
+import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../_model/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  model: any = {};
+  user: User = {};
+  pageTitle:'Login'
+  errorMessage: string;
+      returnUrl: string;
+  constructor(private route: ActivatedRoute,
+        private router: Router,private loginService: LoginService) { }
 
   ngOnInit() {
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+  login() {
+
+
+    this.loginService.userLogin(this.model).subscribe(
+      user => {
+         this.user=user;
+                   
+     this.router.navigate(['/workout', `${this.user.userId}`);
+    },
+      error => {
+        this.errorMessage = <any>error;
+      
+      });
+
+
   }
 
+
 }
+
