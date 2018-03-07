@@ -16,7 +16,7 @@ export class WorkoutService {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
     return this._http.post(AppSettings.API_ENDPOINT + "/createWorkout", workout, options)
-      .map(success => success.status)
+       .map(success => success.status)
       .catch(this.handleError);
 
 
