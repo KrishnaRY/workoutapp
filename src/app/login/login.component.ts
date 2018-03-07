@@ -9,7 +9,7 @@ import { User } from '../_model/user';
 })
 export class LoginComponent implements OnInit {
   model: any = {};
-  user: User = {};
+  user: User ;
   pageTitle:'Login'
   errorMessage: string;
       returnUrl: string;
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       user => {
          this.user=user;
                    
-     this.router.navigate(['/workout', `${this.user.userId}`);
+     this.router.navigate(['/workout', `${this.user.userId}`]);
     },
       error => {
         this.errorMessage = <any>error;

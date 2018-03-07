@@ -5,7 +5,7 @@ import { LoginComponent,LoginService } from './login/index';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing }        from './app.routing';
-import { WorkoutComponent } from './workout/workout.component'
+import { WorkoutComponent,WorkoutService } from './workout/index'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,7 @@ import { WorkoutComponent } from './workout/workout.component'
     routing
     
   ],
-  providers: [LoginService],
+  providers: [LoginService,WorkoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
