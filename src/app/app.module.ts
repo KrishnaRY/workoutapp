@@ -6,13 +6,21 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing }        from './app.routing';
 import { WorkoutComponent,WorkoutService } from './workout/index';
-import { RegisterComponent,RegisterService } from './register/index'
+import { RegisterComponent,RegisterService } from './register/index';
+import { WorkoutlistComponent } from './workoutlist/workoutlist.component';
+import { WorkouttransactionsListComponent } from './workouttransactionslist/workouttransactionslist.component';
+import { WorkouttransactionsComponent,WorkouttransactionsService } from './workouttransactions/index';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WorkoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    WorkoutlistComponent,
+    WorkouttransactionsListComponent,
+    WorkouttransactionsComponent
+    
   ],
     schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -24,7 +32,7 @@ import { RegisterComponent,RegisterService } from './register/index'
     routing
     
   ],
-  providers: [LoginService,WorkoutService,RegisterService],
+  providers: [LoginService,WorkoutService,RegisterService,WorkouttransactionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

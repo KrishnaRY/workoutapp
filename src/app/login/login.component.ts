@@ -10,7 +10,7 @@ import { User } from '../_model/user';
 export class LoginComponent implements OnInit {
   model: any = {};
   user: User ;
-  pageTitle:'Login'
+  pageTitle:string='Login';
   errorMessage: string;
       returnUrl: string;
   constructor(private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       user => {
          this.user=user;
                    
-     this.router.navigate(['/workout', `${this.user.userId}`]);
+     this.router.navigate(['/workoutlist', `${this.user.userId}`]);
     },
       error => {
         this.errorMessage = <any>error;

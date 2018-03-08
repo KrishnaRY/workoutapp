@@ -6,30 +6,28 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import { WorkoutTransaction } from '../_model/workouttransaction';
 import { Workout } from '../_model/workout';
 @Injectable()
-export class WorkoutService {
+export class WorkouttransactionsService {
 
   constructor(private _http: Http) { }
-  createWorkout(workout: Workout) {
-
-    let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: cpHeaders });
-    return this._http.post(AppSettings.API_ENDPOINT + "/createWorkout", workout, options)
-       .map(success => success.status)
-      .catch(this.handleError);
-
-
-  }
-
-
-   getWorkouts(userId:number): Observable<Workout[]> {
-        return this._http.get(AppSettings.API_ENDPOINT+"/getWorkouts/"+userId)
+ getWorkouttrans(workoutId:number): Observable<WorkoutTransaction[]> {
+        return this._http.get(AppSettings.API_ENDPOINT+"/getWorkoutTransactions/"+workoutId)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-  private handleError(err: Response | any) {
+ getWorkout(workoutId:number): Observable<Workout>{
+        
+    return this._http.get(AppSettings.API_ENDPOINT +"/getWorkout/"+workoutId)
+           .map(this.extractData)
+           .catch(this.handleError);
+  
+  }
+
+
+    private handleError(err: Response | any) {
     let errorMessage = '';
     if (err.error instanceof Error) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -44,6 +42,7 @@ export class WorkoutService {
 
     private extractData(res: Response) {
 	let body = res.json();
+  console.log(body);
         return body;
     }
 }

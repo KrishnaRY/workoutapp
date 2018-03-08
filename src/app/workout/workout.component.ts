@@ -8,9 +8,9 @@ import { WorkoutService } from './workout.service';
   styleUrls: ['./workout.component.css']
 })
 export class WorkoutComponent implements OnInit {
-  pageTitle: 'Create workout'
+  pageTitle:string= 'Create workout';
   model: any = {};
-  userId: number;
+  userId: string;
   errorMessage: string;
   public unittimes: UnitTime[] = [
     { "id": 1, "unittime": "HOUR" },
@@ -22,19 +22,19 @@ export class WorkoutComponent implements OnInit {
 
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('userId');
-    this.userId = Number(param);
+   // this.userId = Number(param);
+     this.userId = param;
 
   }
 
   workout() {
-    alert(this.model.title)
-    alert(this.model.calBurntPerUnitTime)
+   
     this.model.unitTime = this.selectedUnitTime.unittime;
-    this.model.userId = this.userId;
-    alert(this.userId)
+    this.model.userId = Number(this.userId);
+  
     this.workoutService.createWorkout(this.model).subscribe(response => {
 
-
+    this.router.navigate(['/workoutlist', `${this.userId}`]);
     },
       error => {
         this.errorMessage = <any>error;
@@ -52,5 +52,7 @@ export class WorkoutComponent implements OnInit {
       }
     }
   }
+
+  
 
 }
