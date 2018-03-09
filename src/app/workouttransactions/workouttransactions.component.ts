@@ -6,7 +6,8 @@ import { WorkoutTransaction } from '../_model/workouttransaction';
 @Component({
   selector: 'app-workouttransactions',
   templateUrl: './workouttransactions.component.html',
-  styleUrls: ['./workouttransactions.component.css']
+  styleUrls: ['./workouttransactions.component.css'],
+   providers:[WorkoutTransaction]
 })
 export class WorkouttransactionsComponent implements OnInit {
  pageTitle:string= 'Start workout';

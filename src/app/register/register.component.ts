@@ -5,7 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers:[RegisterService]
 })
 export class RegisterComponent implements OnInit {
  model: any = {};

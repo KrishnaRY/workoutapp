@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { AppComponent } from './app.component';
-import { LoginComponent,LoginService } from './login/index';
+import { LoginComponent } from './login/index';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing }        from './app.routing';
-import { WorkoutComponent,WorkoutService } from './workout/index';
-import { RegisterComponent,RegisterService } from './register/index';
+import { WorkoutComponent } from './workout/index';
+import { RegisterComponent } from './register/index';
 import { WorkoutlistComponent } from './workoutlist/workoutlist.component';
 import { WorkouttransactionsListComponent } from './workouttransactionslist/workouttransactionslist.component';
-import { WorkouttransactionsComponent,WorkouttransactionsService } from './workouttransactions/index';
+import { WorkouttransactionsComponent } from './workouttransactions/index';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { WorkouttransactionsComponent,WorkouttransactionsService } from './worko
     routing
     
   ],
-  providers: [LoginService,WorkoutService,RegisterService,WorkouttransactionsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
