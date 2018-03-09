@@ -1,13 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RegisterComponent } from './register.component';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { Component, OnInit } from '@angular/core';
+import { RegisterService } from './register.service';
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+       imports: [ FormsModule,RouterTestingModule,HttpModule],
+        schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  providers:    [ RegisterService,
+         { provide: RegisterService, useClass: RegisterService } ],
       declarations: [ RegisterComponent ]
     })
     .compileComponents();
@@ -23,3 +33,4 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

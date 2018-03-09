@@ -1,11 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
-
+import { MockBackend } from '@angular/http/testing';
+import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import { WorkouttransactionsService } from './workouttransactions.service';
 
 describe('WorkouttransactionsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [WorkouttransactionsService]
+      providers: [WorkouttransactionsService,{provide: Http, deps: [MockBackend]}]
     });
   });
 
