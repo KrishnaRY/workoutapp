@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AppSettings } from '../appSettings';
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -7,15 +6,16 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import { Workout } from '../_model/workout';
+import { ServiceUrlProviderService } from '../serviceurlprovider.service';
 @Injectable()
 export class WorkoutService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http,private serviceUrlProviderService:ServiceUrlProviderService) { }
   createWorkout(workout: Workout) {
 
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    return this._http.post(AppSettings.API_ENDPOINT + "/createWorkout", workout, options)
+    return this._http.post(this.serviceUrlProviderService.getCompleteServiceUrl("createWorkout"), workout, options)
        .map(success => success.status)
       .catch(this.handleError);
 
@@ -24,7 +24,7 @@ export class WorkoutService {
 
 
    getWorkouts(userId:number): Observable<Workout[]> {
-        return this._http.get(AppSettings.API_ENDPOINT+"/getWorkouts/"+userId)
+        return this._http.get(this.serviceUrlProviderService.getCompleteServiceUrl("getWorkouts/")+userId)
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -5,8 +5,8 @@ import { WorkoutService } from './workout.service';
 @Component({
   selector: 'app-workout',
   templateUrl: './workout.component.html',
-  styleUrls: ['./workout.component.css'],
-    providers:[WorkoutService]
+  styleUrls: ['./workout.component.css']
+  
 })
 export class WorkoutComponent implements OnInit {
   pageTitle:string= 'Create workout';

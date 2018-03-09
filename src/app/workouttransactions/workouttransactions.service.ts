@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AppSettings } from '../appSettings';
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -8,19 +7,20 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import { WorkoutTransaction } from '../_model/workouttransaction';
 import { Workout } from '../_model/workout';
+import { ServiceUrlProviderService } from '../serviceurlprovider.service';
 @Injectable()
 export class WorkouttransactionsService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http,private serviceUrlProviderService:ServiceUrlProviderService) { }
  getWorkouttrans(workoutId:number): Observable<WorkoutTransaction[]> {
-        return this._http.get(AppSettings.API_ENDPOINT+"/getWorkoutTransactions/"+workoutId)
+        return this._http.get(this.serviceUrlProviderService.getCompleteServiceUrl("getWorkoutTransactions/")+workoutId)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
  getWorkout(workoutId:number): Observable<Workout>{
         
-    return this._http.get(AppSettings.API_ENDPOINT +"/getWorkout/"+workoutId)
+    return this._http.get(this.serviceUrlProviderService.getCompleteServiceUrl("getWorkout/")+workoutId)
            .map(this.extractData)
            .catch(this.handleError);
   
@@ -30,7 +30,7 @@ export class WorkouttransactionsService {
 
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: cpHeaders });
-    return this._http.post(AppSettings.API_ENDPOINT + "/createWorkoutTransaction", workoutTransaction, options)
+    return this._http.post(this.serviceUrlProviderService.getCompleteServiceUrl("createWorkoutTransaction"), workoutTransaction, options)
        .map(success => success.status)
       .catch(this.handleError);
 

@@ -5,11 +5,12 @@ import { LoginComponent } from './login/index';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing }        from './app.routing';
-import { WorkoutComponent } from './workout/index';
+import { WorkoutComponent,WorkoutService } from './workout/index';
 import { RegisterComponent } from './register/index';
 import { WorkoutlistComponent } from './workoutlist/workoutlist.component';
 import { WorkouttransactionsListComponent } from './workouttransactionslist/workouttransactionslist.component';
-import { WorkouttransactionsComponent } from './workouttransactions/index';
+import { WorkouttransactionsComponent,WorkouttransactionsService } from './workouttransactions/index';
+import { ServiceUrlProviderService } from './serviceurlprovider.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { WorkouttransactionsComponent } from './workouttransactions/index';
     routing
     
   ],
-  providers: [],
+  providers: [ServiceUrlProviderService,WorkouttransactionsService,WorkoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

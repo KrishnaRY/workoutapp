@@ -5,8 +5,8 @@ import { Workout } from '../_model/workout';
 @Component({
   selector: 'app-workoutlist',
   templateUrl: './workoutlist.component.html',
-  styleUrls: ['./workoutlist.component.css'],
-  providers:[WorkoutService]
+  styleUrls: ['./workoutlist.component.css']
+ 
 })
 export class WorkoutlistComponent implements OnInit {
   userId: number;
