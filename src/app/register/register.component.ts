@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
  model: any = {};
- pageTitle:'Register'
+ pageTitle:string='User Registration'
   errorMessage: string;
   constructor(private route: ActivatedRoute,
         private router: Router,private registerService:RegisterService) { }

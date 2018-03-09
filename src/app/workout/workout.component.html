@@ -1,9 +1,10 @@
 <div class="col-md-6 col-md-offset-3">
-   
+
     <h2>{{pageTitle}}</h2>
-      <div *ngIf='errorMessage' class='alert alert-danger'>
-    Error: {{ errorMessage }}
-                    </div>
+    <div *ngIf='errorMessage' class='alert alert-danger'>
+        Error: {{ errorMessage }}
+    </div>
+    <div class="logout"><a [routerLink]="['/logout']"> Logout </a></div>
     <form name="form" (ngSubmit)="f.form.valid && workout()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid }">
             <label for="title">Title</label>
@@ -12,20 +13,20 @@
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !calBurntPerUnitTime.valid }">
             <label for="calBurntPerUnitTime">CalBurntPerUnitTime</label>
-            <input type="calBurntPerUnitTime" class="form-control" name="calBurntPerUnitTime" [(ngModel)]="model.calBurntPerUnitTime" #calBurntPerUnitTime="ngModel" required 
-            pattern="^[0-9]+(\.[0-9]{1,2})?$"/>
+            <input type="calBurntPerUnitTime" class="form-control" name="calBurntPerUnitTime" [(ngModel)]="model.calBurntPerUnitTime"
+                #calBurntPerUnitTime="ngModel" required pattern="^[0-9]+(\.[0-9]{1,2})?$" />
             <div *ngIf="f.submitted && !calBurntPerUnitTime.valid" class="alert alert-danger">calBurntPerUnitTime is required</div>
             <div [hidden]="!calBurntPerUnitTime.hasError('pattern')">Only Numbers allowed</div>
         </div>
         <div class="form-group">
-          <label for="unitTime">UnitTime</label>
-        <select (change)="onSelect($event.target.value)">
+            <label for="unitTime">UnitTime</label>
+            <select (change)="onSelect($event.target.value)">
       <option *ngFor="let unittime of unittimes" [value]="unittime.id">{{unittime.unittime}}</option>
     </select>
-    </div>
+        </div>
         <div class="form-group">
-               
-            <button  class="btn btn-primary">Create Workout</button>              
+
+            <button class="btn btn-primary">Create Workout</button>
         </div>
     </form>
 </div>

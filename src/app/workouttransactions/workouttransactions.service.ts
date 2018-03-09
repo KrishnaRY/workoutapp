@@ -26,6 +26,17 @@ export class WorkouttransactionsService {
   
   }
 
+  createWorkouttrans(workoutTransaction:WorkoutTransaction){
+
+    let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: cpHeaders });
+    return this._http.post(AppSettings.API_ENDPOINT + "/createWorkoutTransaction", workoutTransaction, options)
+       .map(success => success.status)
+      .catch(this.handleError);
+
+
+  }
+
 
     private handleError(err: Response | any) {
     let errorMessage = '';

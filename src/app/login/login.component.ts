@@ -10,7 +10,7 @@ import { User } from '../_model/user';
 export class LoginComponent implements OnInit {
   model: any = {};
   user: User ;
-  pageTitle:string='Login';
+  pageTitle:string='User Login ';
   errorMessage: string;
       returnUrl: string;
   constructor(private route: ActivatedRoute,

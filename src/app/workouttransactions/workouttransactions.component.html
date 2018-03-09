@@ -1,3 +1,16 @@
-<p>
-  workouttransactions works!
-</p>
+<div class="col-md-6 col-md-offset-3">
+
+  <h2> {{pageTitle + ' : ' + title}}</h2>
+  <div class="logout"><a [routerLink]="['/logout']"> Logout </a></div>
+  <div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" (click)="back();">Back</button>
+    <button [class.disabled]="isClickedStart" class="btn btn-primary" (click)="isClickedStart = true;start();">Start</button>
+    <button [class.disabled]="isClickedStop" class="btn btn-primary" (click)="isClickedStop = true;stop();">Stop</button>
+
+  </div>
+
+</div>

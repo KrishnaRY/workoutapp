@@ -9,7 +9,7 @@ import { Workout } from '../_model/workout';
 })
 export class WorkoutlistComponent implements OnInit {
   userId: number;
- pageTitle:string= 'workout details';
+ pageTitle:string= 'Workout details :';
    workouts: Workout[] = [];
   errorMessage: string;
   constructor(private router: Router, private route: ActivatedRoute, private workoutService: WorkoutService) { }
